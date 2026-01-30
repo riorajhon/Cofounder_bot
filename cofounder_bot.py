@@ -139,16 +139,8 @@ def run_cycle(bearer_token: str, message: str, last_profile_id: str, webhook_url
 
     # Notify Discord with batch result only when at least one connection was sent
     if sent > 0:
-        lines = [
-            "**Cofounder bot — batch result**",
-            f"Connections sent: **{sent}**",
-            f"Last profile id: `{new_last}`",
-            "",
-            "**Connected:**",
-        ]
-        for pid, first, last in connected:
-            lines.append(f"• `{pid}` — {first} {last}".strip() or f"• `{pid}`")
-        discord_msg = "\n".join(lines)
+        names = [f"{first} {last}".strip() or pid for pid, first, last in connected]
+        discord_msg = f"{sent} connected: {', '.join(names)}"
         send_discord_webhook(webhook_url, discord_msg)
 
     return new_last
