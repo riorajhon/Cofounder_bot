@@ -21,7 +21,7 @@ SEARCH_URL = "https://cofounderslab.com/api/backend/founder/search"
 CONNECT_URL = "https://cofounderslab.com/api/backend/connection/connect"
 SEARCH_LIMIT = 20
 SEARCH_PAGE = 1
-LOOP_INTERVAL_SEC = 5 * 60  # 5 minutes
+LOOP_INTERVAL_SEC = 10 * 60  # 5 minutes
 
 
 def load_env():
