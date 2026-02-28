@@ -155,7 +155,10 @@ def main():
         try:
             last_profile_id = run_cycle(token, message, last_profile_id, webhook_url)
         except requests.RequestException as e:
-            print(f"Request error: {e}")
+            err_msg = f"Request error: {e}"
+            print(err_msg)
+            # Send alert to Discord if webhook is configured
+            send_discord_webhook(webhook_url, err_msg)
         except KeyboardInterrupt:
             print("\nStopped.")
             break
